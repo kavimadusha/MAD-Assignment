@@ -23,6 +23,7 @@ public class Garageowner_reg extends AppCompatActivity {
     private Button gvehiclereg_btn;
     private TextInputLayout goemail,goname,gophnum,gopw,gocpw;
 
+
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
