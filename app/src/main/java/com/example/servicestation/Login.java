@@ -9,14 +9,17 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity {
+   public class Login extends AppCompatActivity {
 
     private Button logbtn;
     private Button frogetpw;
     private Button newreg;
-    private TextInputLayout uname,pw;
+    private TextInputLayout l_mail;
+    private TextInputLayout l_pw;
 
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +30,20 @@ public class Login extends AppCompatActivity {
         logbtn = findViewById(R.id.log_btn);
         frogetpw = findViewById(R.id.froget_pw);
         newreg = findViewById(R.id.nw_reg);
-        uname = findViewById(R.id.l_email);
-        pw = findViewById(R.id.l_pasword);
+        l_mail = findViewById(R.id.l_email);
+        l_pw = findViewById(R.id.l_pasword);
+
+        auth = FirebaseAuth.getInstance();
 
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login.this,Dboard.class));
-                finish();
+
+                String email = l_mail.getEditText().toString();
+                String pw = l_pw.getEditText().toString();
+
+                loginUser(email,pw);
             }
         });
         frogetpw.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +60,9 @@ public class Login extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+    private void loginUser(String email,String pw){
 
     }
 }
