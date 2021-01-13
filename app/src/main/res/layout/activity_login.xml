@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:transitionName="logo_image"
+        android:src="@drawable/ss"
+        android:textAlignment="center"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"/>
+
+    <TextView
+        android:id="@+id/logo_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hellow, Welcome Back"
+        android:transitionName="logo_text"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="40sp"
+        android:fontFamily="@font/bangers"/>
+
+    <TextView
+        android:id="@+id/sslogo_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign in to Continue"
+        android:transitionName="logo_text2"
+        android:textSize="18sp"
+        android:textColor="#000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/l_email"
+            android:hint="E mail"
+
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/l_pasword"
+            android:hint="Password"
+            android:transitionName="pw_trance"
+            app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/froget_pw"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:text="Forget Password?"
+            android:layout_gravity="left"
+            android:elevation="0dp"
+            android:textColor="@color/black"
+            android:transitionName="fp_trance"/>
+
+        <Button
+            android:id="@+id/log_btn"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffa500"
+            android:text="Log in"
+            android:textColor="#fff"
+            android:transitionName="logbtn_trance" />
+
+        <Button
+            android:id="@+id/nw_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="New User? Register"
+            android:elevation="0dp"
+            android:background="#00000000"
+            android:textColor="#000"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="left"
+            android:transitionName="loginreg_trance"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
