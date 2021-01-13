@@ -15,8 +15,7 @@ public class Login extends AppCompatActivity {
     private Button logbtn;
     private Button frogetpw;
     private Button newreg;
-    TextInputLayout uname,pw;
-    boolean validateEmail;
+    private TextInputLayout uname,pw;
 
 
     @Override
@@ -28,7 +27,8 @@ public class Login extends AppCompatActivity {
         logbtn = findViewById(R.id.log_btn);
         frogetpw = findViewById(R.id.froget_pw);
         newreg = findViewById(R.id.nw_reg);
-
+        uname = findViewById(R.id.l_email);
+        pw = findViewById(R.id.l_pasword);
 
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
