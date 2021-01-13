@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
    public class Login extends AppCompatActivity {
@@ -38,7 +41,6 @@ import com.google.firebase.auth.FirebaseAuth;
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this,Dboard.class));
 
                 String email = l_mail.getEditText().toString();
                 String pw = l_pw.getEditText().toString();
@@ -63,7 +65,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
     }
     private void loginUser(String email,String pw){
-
+        auth.signInWithEmailAndPassword(email,pw).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Login.this,Dboard.class));
+                finish();
+            }
+        });
     }
 }
 
