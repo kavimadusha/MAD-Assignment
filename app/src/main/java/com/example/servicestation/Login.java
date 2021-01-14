@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
    public class Login extends AppCompatActivity {
 
@@ -41,9 +42,16 @@ import com.google.firebase.auth.FirebaseAuth;
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(Login.this,Dboard.class));
+                finish();
 
                 String email = l_mail.getEditText().toString();
                 String pw = l_pw.getEditText().toString();
+
+                if(email.isEmpty()){
+                    Toast.makeText(Login.this,"Invalid Inputs",Toast.LENGTH_SHORT).show();
+
+                }
 
                 loginUser(email,pw);
             }
@@ -62,7 +70,6 @@ import com.google.firebase.auth.FirebaseAuth;
                 finish();
             }
         });
-
     }
     private void loginUser(String email,String pw){
         auth.signInWithEmailAndPassword(email,pw).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -73,6 +80,7 @@ import com.google.firebase.auth.FirebaseAuth;
                 finish();
             }
         });
+
     }
 }
 
