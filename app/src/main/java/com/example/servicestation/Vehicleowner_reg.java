@@ -1,5 +1,6 @@
 package com.example.servicestation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,7 +11,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,8 +25,11 @@ public class Vehicleowner_reg extends AppCompatActivity {
     private Button vgargereg_btn;
     private TextInputLayout voemail,vouname,vophnum,vopw,vocpw;
 
+    private FirebaseAuth auth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    private Object AuthResult;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,8 @@ public class Vehicleowner_reg extends AppCompatActivity {
         vophnum = findViewById(R.id.vor_phno);
         vopw = findViewById(R.id.vor_password);
         vocpw = findViewById(R.id.vor_cpassword);
+
+        auth = FirebaseAuth.getInstance();
 
         vreg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,5 +95,6 @@ public class Vehicleowner_reg extends AppCompatActivity {
         });
     }
     private void registerUser(String vemail, String vuname, String vphnum, String vpw1, String vcpw) {
+
     }
 }
