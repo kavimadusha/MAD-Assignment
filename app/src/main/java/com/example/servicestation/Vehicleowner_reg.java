@@ -26,12 +26,11 @@ public class Vehicleowner_reg extends AppCompatActivity {
     private Button vreg_btn;
     private Button vlogback_btn;
     private Button vgargereg_btn;
-    private TextInputLayout voemail,vouname,vophnum,vopw,vocpw;
+    private TextInputLayout voemail, vouname, vophnum, vopw, vocpw;
 
     private FirebaseAuth auth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
-    private Object AuthResult;
 
 
     @Override
@@ -54,50 +53,108 @@ public class Vehicleowner_reg extends AppCompatActivity {
         vreg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Vehicleowner_reg.this,Dboard.class));
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("Vehicle owner");
+                startActivity(new Intent(Vehicleowner_reg.this, Dboard.class));
 
-                String vemail = voemail.getEditText().getText().toString();
-                String vuname = vouname.getEditText().getText().toString();
-                String vphnum = vophnum.getEditText().getText().toString();
-                String vpw1 = vopw.getEditText().getText().toString();
-                String vcpw = vocpw .getEditText().getText().toString();
+                    registerUser();
+                }
 
-                UserHelperClass helperClass = new UserHelperClass(vemail,vuname,vphnum,vpw1,vcpw);
-                reference.child(vuname).setValue(helperClass);
-
-                if (TextUtils.isEmpty(vemail)||TextUtils.isEmpty(vuname)||TextUtils.isEmpty(vphnum)||TextUtils.isEmpty(vpw1)||TextUtils.isEmpty(vcpw)){
-                    Toast.makeText(Vehicleowner_reg.this,"Please fill in all input files",Toast.LENGTH_SHORT).show();
-                }
-                else if (vpw1.length()<7){
-                    Toast.makeText(Vehicleowner_reg.this,"Password should be strong",Toast.LENGTH_SHORT).show();
-                }
-                else if (!vpw1.equals(vcpw)){
-                    Toast.makeText(Vehicleowner_reg.this,"Password is not matched",Toast.LENGTH_SHORT).show();
-
-                }
-                else {
-                    registerUser(vemail,vuname,vphnum,vpw1,vcpw);
-                }
-            }
         });
         vlogback_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Vehicleowner_reg.this,Login.class));
+                startActivity(new Intent(Vehicleowner_reg.this, Login.class));
                 finish();
             }
         });
         vgargereg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Vehicleowner_reg.this,Garageowner_reg.class));
+                startActivity(new Intent(Vehicleowner_reg.this, Garageowner_reg.class));
                 finish();
             }
         });
     }
-    private void registerUser(String vemail, String vuname, String vphnum, String vpw1, String vcpw) {
+
+    private void registerUser() {
+        String vemail = voemail.getEditText().getText().toString();
+        String vuname = vouname.getEditText().getText().toString();
+        String vphnum = vophnum.getEditText().getText().toString();
+        String vpw1 = vopw.getEditText().getText().toString();
+        String vcpw = vocpw.getEditText().getText().toString();
+
+        if (vemail.isEmpty()) {
+            voemail.setError("Email is Empty");
+            voemail.requestFocus();
+            return;
+        }
+        if (vuname.isEmpty()) {
+            vouname.setError("Username is Empty");
+            vouname.requestFocus();
+            return;
+        }
+        if (vphnum.isEmpty()) {
+            vophnum.setError("Phone Number is Empty");
+            vophnum.requestFocus();
+            return;
+        }
+        if (vpw1.isEmpty()) {
+            vopw.setError("Password is Empty");
+            vopw.requestFocus();
+            return;
+        }
+        if (vcpw.isEmpty()) {
+            vocpw.setError("Confirm Passwor is Empty");
+            vocpw.requestFocus();
+            return;
+        }
+        if (!vopw.equals(vocpw)) {
+            Toast.makeText(Vehicleowner_reg.this, "Password is not matched", Toast.LENGTH_SHORT).show();
+            vocpw.requestFocus();
+            vopw.requestFocus();
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(vemail).matches()){
+            voemail.setError("Please Enter Valid Email");
+            voemail.requestFocus();
+            return;
+        }
+        if (vcpw.length()<6){
+            vopw.setError("Minimum Password Length should be 6 Characters");
+            vopw.requestFocus();
+            return;
+        }
+        vreg_btn.setVisibility(View.VISIBLE);
+        auth.createUserWithEmailAndPassword(vemail,vpw1)
+                .addOnCompleteListener(new OnCompleteListener<com.google.firebase.auth.AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<com.google.firebase.auth.AuthResult> task) {
+                        if(task.isSuccessful()){
+                            UserHelperClass helperClass = new UserHelperClass(vemail, vuname, vphnum, vpw1, vcpw);
+
+                            rootNode = FirebaseDatabase.getInstance();
+
+                            FirebaseDatabase.getInstance().getReference("Vehicle owner")
+                                 .setValue(helperClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                             @Override
+                             public void onComplete(@NonNull Task<Void> task) {
+                                 if(task.isSuccessful()){
+                                     Toast.makeText(Vehicleowner_reg.this,"User has been Registered Successfult",Toast.LENGTH_LONG).show();
+                                     vreg_btn.setVisibility(View.GONE);
+
+                                 }else {
+                                     Toast.makeText(Vehicleowner_reg.this,"Failed to Register",Toast.LENGTH_LONG).show();
+                                     vreg_btn.setVisibility(View.VISIBLE);
+
+                                 }
+                             }
+                         });
+
+                        }else{
+                            Toast.makeText(Vehicleowner_reg.this,"Failed to Register",Toast.LENGTH_LONG).show();
+                            vreg_btn.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
 
     }
 }
