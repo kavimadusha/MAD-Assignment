@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -48,6 +49,7 @@ public class Garageowner_reg extends AppCompatActivity {
                 startActivity(new Intent(Garageowner_reg.this,Dboard.class));
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("Garage owner");
+
                 String gemail = goemail.getEditText().getText().toString();
                 String gname = goname.getEditText().getText().toString();
                 String gphnum = gophnum.getEditText().getText().toString();
@@ -57,17 +59,51 @@ public class Garageowner_reg extends AppCompatActivity {
                 UserHelperClass2 helperClass2 = new UserHelperClass2(gemail,gname,gphnum,gpw,gcpw);
                 reference.child(gname).setValue(helperClass2);
 
-                if (TextUtils.isEmpty(gemail)||TextUtils.isEmpty(gname)||TextUtils.isEmpty(gphnum)||TextUtils.isEmpty(gpw)||TextUtils.isEmpty(gcpw)){
-                    Toast.makeText(Garageowner_reg.this,"Please fill in all input files",Toast.LENGTH_SHORT).show();
+                if (gemail.isEmpty()) {
+                    goemail.setError("Email is Empty");
+                    goemail.requestFocus();
+                    return;
                 }
-                else if (gpw.length()<7){
-                    Toast.makeText(Garageowner_reg.this,"Password should be strong",Toast.LENGTH_SHORT).show();
+                if (gname.isEmpty()) {
+                    goname.setError("Username is Empty");
+                    goname.requestFocus();
+                    return;
                 }
-                else if (!gpw.equals(gcpw)){
-                    Toast.makeText(Garageowner_reg.this,"Password is not matched",Toast.LENGTH_SHORT).show();
+                if (gphnum.isEmpty()) {
+                    gophnum.setError("Phone Number is Empty");
+                    gophnum.requestFocus();
+                    return;
+                }
+                if (gpw.isEmpty()) {
+                    gopw.setError("Password is Empty");
+                    gopw.requestFocus();
+                    return;
+                }
+                if (gcpw.isEmpty()) {
+                    gocpw.setError("Confirm Passwor is Empty");
+                    gocpw.requestFocus();
+                    return;
+                }
+                if (gopw.equals(gocpw)) {
+                    Toast.makeText(Garageowner_reg.this, "Password is not matched", Toast.LENGTH_SHORT).show();
+                    gocpw.requestFocus();
+                    gopw.requestFocus();
+                    return;
+                }
+                if (!Patterns.EMAIL_ADDRESS.matcher(gemail).matches()) {
+                    goemail.setError("Please Enter Valid Email");
+                    goemail.requestFocus();
+                    return;
+                }
+                if (gcpw.length() < 6) {
+                    gopw.setError("Minimum Password Length should be 6 Characters");
+                    gopw.requestFocus();
+                    return;
                 }
                 else {
                         registerUser(gemail,gname,gphnum,gpw,gcpw);
+                    Toast.makeText(Garageowner_reg.this,"User has been Registered Successfult",Toast.LENGTH_LONG).show();
+
                 }
             }
         });
@@ -75,14 +111,12 @@ public class Garageowner_reg extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Garageowner_reg.this,Login.class));
-                finish();
             }
         });
         gvehiclereg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Garageowner_reg.this,Vehicleowner_reg.class));
-                finish();
             }
         });
     }
