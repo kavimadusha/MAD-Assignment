@@ -1,15 +1,20 @@
    package com.example.servicestation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,25 +47,13 @@ import com.google.firebase.database.FirebaseDatabase;
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this,Dboard.class));
-                finish();
-
-                String email = l_mail.getEditText().toString();
-                String pw = l_pw.getEditText().toString();
-
-                if(email.isEmpty()){
-                    Toast.makeText(Login.this,"Invalid Inputs",Toast.LENGTH_SHORT).show();
-
-                }
-
-                loginUser(email,pw);
+                loginUser();
             }
         });
         frogetpw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this,Frogetpw.class));
-                finish();
+
             }
         });
         newreg.setOnClickListener(new View.OnClickListener() {
@@ -71,15 +64,38 @@ import com.google.firebase.database.FirebaseDatabase;
             }
         });
     }
-    private void loginUser(String email,String pw){
-        auth.signInWithEmailAndPassword(email,pw).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                Toast.makeText(Login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Login.this,Dboard.class));
-                finish();
+    private void loginUser(){
+
+        String email = l_mail.getEditText().toString();
+        String pw = l_pw.getEditText().toString();
+        if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            if (!pw.isEmpty()){
+
+                auth.signInWithEmailAndPassword(email,pw)
+                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+                                Toast.makeText(Login.this,"Login Successfully",Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(Login.this,Dboard.class));
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }else {
+                 l_mail.setError("Empty Fields are not Allowed");
             }
-        });
+        }else if (email.isEmpty()) {
+            l_mail.setError("Email is Empty");
+        }else if (pw.isEmpty()){
+            l_pw.setError("Password is Empty");
+        }else {
+            l_mail.setError("Please Enter Correct Email");
+        }
 
     }
 }
