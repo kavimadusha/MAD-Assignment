@@ -71,44 +71,44 @@ public class Vehicleowner_reg extends AppCompatActivity {
                     voemail.requestFocus();
                     return;
                 }
-                if (vuname.isEmpty()) {
+                else if (vuname.isEmpty()) {
                     vouname.setError("Username is Empty");
                     vouname.requestFocus();
                     return;
                 }
-                if (vphnum.isEmpty()) {
+               else if (vphnum.isEmpty()) {
                     vophnum.setError("Phone Number is Empty");
                     vophnum.requestFocus();
                     return;
                 }
-                if (vpw1.isEmpty()) {
+               else if (vpw1.isEmpty()) {
                     vopw.setError("Password is Empty");
                     vopw.requestFocus();
                     return;
                 }
-                if (vcpw.isEmpty()) {
-                    vocpw.setError("Confirm Passwor is Empty");
+               else if (vcpw.isEmpty()) {
+                    vocpw.setError("Confirm Password is Empty");
                     vocpw.requestFocus();
                     return;
                 }
-                if (vopw.equals(vocpw)) {
+               else if (vopw.equals(vocpw)) {
                     Toast.makeText(Vehicleowner_reg.this, "Password is not matched", Toast.LENGTH_SHORT).show();
                     vocpw.requestFocus();
                     vopw.requestFocus();
                     return;
                 }
-                if (!Patterns.EMAIL_ADDRESS.matcher(vemail).matches()) {
+               else if (!Patterns.EMAIL_ADDRESS.matcher(vemail).matches()) {
                     voemail.setError("Please Enter Valid Email");
                     voemail.requestFocus();
                     return;
                 }
-                if (vcpw.length() < 6) {
+               else if (vcpw.length() < 6) {
                     vopw.setError("Minimum Password Length should be 6 Characters");
                     vopw.requestFocus();
                     return;
                 } else {
                     registerUser(vemail, vuname, vphnum, vpw1, vcpw);
-                    Toast.makeText(Vehicleowner_reg.this, "User has been Registered Successfult", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Vehicleowner_reg.this, "User has been Registered Successfully", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -127,5 +127,16 @@ public class Vehicleowner_reg extends AppCompatActivity {
     }
 
     private void registerUser(String vemail, String vuname, String vphnum, String vpw1, String vcpw) {
+
+        auth.createUserWithEmailAndPassword(vemail,vpw1).addOnCompleteListener(Vehicleowner_reg.this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+           if (task.isSuccessful()){
+               Toast.makeText(Vehicleowner_reg.this,"Registration Successful",Toast.LENGTH_LONG).show();
+           }else {
+               Toast.makeText(Vehicleowner_reg.this,"Registration Failed",Toast.LENGTH_LONG).show();
+           }
+            }
+        });
     }
 }
