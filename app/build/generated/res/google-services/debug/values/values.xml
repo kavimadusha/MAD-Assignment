@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">560666697041-38sbo5cvbohlsi48bpspli86o0kbil5j.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">560666697041</string>
+    <string name="google_api_key" translatable="false">AIzaSyC0F_BUn_Sd13-QmR6Y8hEOxktqkSCbpZk</string>
+    <string name="google_app_id" translatable="false">1:560666697041:android:1a5d0c8f32cb10eb488770</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC0F_BUn_Sd13-QmR6Y8hEOxktqkSCbpZk</string>
+    <string name="google_storage_bucket" translatable="false">service-station-db.appspot.com</string>
+    <string name="project_id" translatable="false">service-station-db</string>
+</resources>

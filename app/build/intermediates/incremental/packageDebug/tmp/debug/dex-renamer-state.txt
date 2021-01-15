@@ -1,0 +1,4 @@
+#Fri Jan 15 02:58:57 IST 2021
+base.0=E\:\\Desktop\\Service_Station-Mobile-App-MAD-Assignment-master\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
