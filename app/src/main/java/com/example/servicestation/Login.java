@@ -84,7 +84,6 @@ import com.google.firebase.database.FirebaseDatabase;
                         Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }else {
                  l_mail.setError("Empty Fields are not Allowed");
             }
