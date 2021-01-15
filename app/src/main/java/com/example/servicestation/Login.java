@@ -60,7 +60,6 @@ import com.google.firebase.database.FirebaseDatabase;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login.this,Register.class));
-                finish();
             }
         });
     }
@@ -77,7 +76,6 @@ import com.google.firebase.database.FirebaseDatabase;
                             public void onSuccess(AuthResult authResult) {
                                 Toast.makeText(Login.this,"Login Successfully",Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(Login.this,Dboard.class));
-                                finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override

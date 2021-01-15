@@ -111,14 +111,12 @@ public class Garageowner_reg extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Garageowner_reg.this,Login.class));
-                finish();
             }
         });
         gvehiclereg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Garageowner_reg.this,Vehicleowner_reg.class));
-                finish();
             }
         });
     }
