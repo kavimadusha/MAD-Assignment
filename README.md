@@ -1,4 +1,4 @@
-# MAD-Assignment
+﻿# MAD Assignment
 Nowadays having vehicle has become a common aspect of every Sri Lankans. Thus sales of the vehicle also have increased. Vehicle must need regular service also. Not only that we can’t imaging whenever or where ever that vehicle will be breakdown in unexpected time. So we are 21st century and the global is becoming technologically improvements. Because of that as Information technology students we try to build up service station like garage application
 
 With the advent of globalization and technological advancement, the use of technology by people has increased.  The use of vehicles by people in day-to-day life has also increased rapidly.  This app is introduced to prevent errors in the use of vehicles and as an immediate step to take in the event of a sudden vehicle breakdown. 
