@@ -42,6 +42,7 @@ import com.google.firebase.database.FirebaseDatabase;
         l_mail = findViewById(R.id.l_email);
         l_pw = findViewById(R.id.l_pasword);
 
+
         auth = FirebaseAuth.getInstance();
 
         logbtn.setOnClickListener(new View.OnClickListener() {
