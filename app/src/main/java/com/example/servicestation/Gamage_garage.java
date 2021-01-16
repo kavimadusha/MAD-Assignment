@@ -1,4 +1,4 @@
-package com.example.garageapp2;
+package com.example.servicestation;
 
 import androidx.appcompat.app.AppCompatActivity;
 

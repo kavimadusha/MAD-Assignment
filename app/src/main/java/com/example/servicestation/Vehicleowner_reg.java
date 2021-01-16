@@ -53,7 +53,7 @@ public class Vehicleowner_reg extends AppCompatActivity {
         vreg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Vehicleowner_reg.this, Dboard.class));
+                startActivity(new Intent(Vehicleowner_reg.this,Service_type .class));
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("Vehicle owner");
 

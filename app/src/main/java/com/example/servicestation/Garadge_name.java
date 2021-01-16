@@ -2,9 +2,17 @@ package com.example.servicestation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
+
+import javax.xml.transform.Result;
 
 public class Garadge_name extends AppCompatActivity {
+
     private Button Next, Back;
     private CheckBox call, employee,vehicle;
 
@@ -22,14 +30,16 @@ public class Garadge_name extends AppCompatActivity {
         vehicle = findViewById(R.id.checkBox7);
 
 
-        call.setOnClickListener(new View.OnClickListener()
-        {
+        call.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if (call.isChecked())
-                    Result.add("Will connect to a call");
+            public void onClick(View v) {
+                if (call.isChecked()){
+                    Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();}
                 else
-                    Result.remove(0"Will connect to a call");
+                    setResult("Will connect to a call");
+                }
+
+            private void setResult(String s) {
             }
         });
 
@@ -37,19 +47,21 @@ public class Garadge_name extends AppCompatActivity {
             @Override
             public void onClick (View v){
                 if (employee.isChecked())
-                    Result.add("An employee will soon be there.");
+                    setResult(1"An employee will soon be there");
                 else
-                    Result.remove(0"An employee will soon be there.");
+                    setResult(2"An employee will soon be there.");
             }
+
+
         });
 
         vehicle.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v){
                 if (vehicle.isChecked())
-                    Result.add("A vehicle will soon be there.");
+                    setResult(1"A vehicle will soon be there.");
                 else
-                    Result.remove(0"A vehicle will soon be there.");
+                    setResult(2"A vehicle will soon be there.");
             }
         });
 

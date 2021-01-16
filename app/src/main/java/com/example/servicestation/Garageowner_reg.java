@@ -55,7 +55,7 @@ public class Garageowner_reg extends AppCompatActivity {
         greg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Garageowner_reg.this,Dboard.class));
+                startActivity(new Intent(Garageowner_reg.this,.class));
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("Garage owner");
 

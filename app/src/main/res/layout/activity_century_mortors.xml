@@ -239,7 +239,7 @@
                     android:layout_weight="1"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
-                    android:text="Next"
+                    android:text="Select"
                     android:textColor="#fff"
                     android:textStyle="bold"
                     android:textSize="18dp"
