@@ -50,6 +50,7 @@ import com.google.firebase.database.FirebaseDatabase;
                 loginUser();
             }
         });
+
         frogetpw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +58,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
             }
         });
+
         newreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

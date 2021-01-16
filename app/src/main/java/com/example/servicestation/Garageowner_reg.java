@@ -30,7 +30,6 @@ public class Garageowner_reg extends AppCompatActivity {
     private TextInputLayout goemail,goname,gophnum,gopw,gocpw;
 
     private FirebaseAuth authm;
-
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
