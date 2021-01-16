@@ -1,11 +1,11 @@
 package com.example.servicestation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Force_garage extends AppCompatActivity {
     private Button Next, Back;
@@ -24,14 +24,14 @@ public class Force_garage extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Force_garage.this,.class));
+                startActivity(new Intent(Force_garage.this,Shedule_pickup.class));
             }
         });
 
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Force_garage.this,MapDetail.class));
+                startActivity(new Intent(Force_garage.this,Mapnew.class));
             }
         });
 

@@ -22,14 +22,14 @@ public class Century_mortors extends AppCompatActivity {
             Next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(Century_mortors.this,.class));
+                    startActivity(new Intent(Century_mortors.this,Shedule_pickup.class));
                 }
             });
 
             Back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(Century_mortors.this,MapDetail.class));
+                    startActivity(new Intent(Century_mortors.this,Mapnew.class));
                 }
             });
 

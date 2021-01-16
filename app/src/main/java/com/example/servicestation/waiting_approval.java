@@ -1,8 +1,8 @@
-package com.example.garageapp2;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.servicestation;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class waiting_approval extends AppCompatActivity {
 

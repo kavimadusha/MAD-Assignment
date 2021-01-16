@@ -1,19 +1,15 @@
 package com.example.servicestation;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -34,7 +30,6 @@ public class Gardge_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gardge_info);
 
-
         textView24 = findViewById(R.id.textView24);
         textView25 = findViewById(R.id.textView25);
         textView36 = findViewById(R.id.textView36);
@@ -46,7 +41,7 @@ public class Gardge_info extends AppCompatActivity {
         summitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Gardge_info.this,.class));
+                startActivity(new Intent(Gardge_info.this,Mapnew.class));
                 rootNode = FirebaseDatabase.getInstance();
                 reference = rootNode.getReference("Garage Information");
 

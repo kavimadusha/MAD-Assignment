@@ -1,7 +1,5 @@
 package com.example.servicestation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +7,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-import javax.xml.transform.Result;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Garadge_name extends AppCompatActivity {
 
@@ -45,21 +43,18 @@ public class Garadge_name extends AppCompatActivity {
         employee.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v){
-                if (employee.isChecked())
+                if (employee.isChecked()){
 
-                    setResult(1"An employee will soon be there");
-                else
-                    setResult(2"An employee will soon be there.");
+                    Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();}
             }
         });
 
         vehicle.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v){
-                if (vehicle.isChecked())
-                    setResult(1"A vehicle will soon be there.");
-                else
-                    setResult(2"A vehicle will soon be there.");
+                if (vehicle.isChecked()){
+                Toast.makeText(Garadge_name.this, "A vehicle will soon be there", Toast.LENGTH_SHORT).show();}
+
             }
         });
 
@@ -76,7 +71,7 @@ public class Garadge_name extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(Garadge_name.this,Century_mortors.class);
+                startActivity(new Intent(Garadge_name.this,Century_mortors.class));
             }
         });
     }
