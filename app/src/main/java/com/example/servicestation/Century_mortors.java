@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 public class Century_mortors extends AppCompatActivity {
-    @Override
+
+
     private Button Next, Back;
-}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,25 +23,16 @@ public class Century_mortors extends AppCompatActivity {
             Next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Button();
+                    startActivity(new Intent(Century_mortors.this,Force_garage.class));
                 }
             });
-
-            public void Button(){
-                Finish finish = new Finish();
-                finish.Next(getSupportFragmentManager(), "Century Motors Garage")
-            }
 
             Back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Century_mortors();
+                    startActivity(new Intent(Century_mortors.this,.class));
                 }
             });
 
-            public void Century_century(){
-                Intent intent = new Intent( this, Sheduleapickup.class);
-                Century_century(intent);
             }
     }
-}

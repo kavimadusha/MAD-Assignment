@@ -1,4 +1,4 @@
-package com.example.garageapp2;
+package com.example.servicestation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,40 +10,31 @@ import android.widget.Button;
 public class Force_garage extends AppCompatActivity {
     private Button Next, Back;
 
-    @Override
-    private Button Next;
-    private Button Back;
+    private Button Next1;
+    private Button Back1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login__paralel);
 
-        Next = (Button) findViewById(R.id.button);
-        Back = (Button) findViewById(R.id.button2);
+        Next1 = (Button) findViewById(R.id.button);
+        Back1 = (Button) findViewById(R.id.button2);
 
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button();
+                startActivity(new Intent(Force_garage.this,.class));
             }
         });
-
-        public void Button(){
-            Finish finish = new Finish();
-            Finish.show(getSupportFragmentManager(), "Gamage Garage")
-        }
 
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Force_garage();
+                startActivity(new Intent(Force_garage.this,.class));
             }
         });
 
-        public void Force_garage(){
-            Intent intent = new Intent( this, Sheduleapickup.class);
-            login_Paralel(intent);
-        }
+
     }
 }

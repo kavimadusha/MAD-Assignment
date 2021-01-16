@@ -1,4 +1,4 @@
-package com.example.garageapp2;
+package com.example.servicestation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class login_Paralel extends AppCompatActivity {
+
     private Button VehicalOwner;
     private Button GarageOwner;
 
@@ -22,23 +23,18 @@ public class login_Paralel extends AppCompatActivity {
         VehicalOwner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login_Paralel();
+
+                startActivity(new Intent(login_Paralel.this,.class));
             }
         });
 
-        public void login_Paralel(){
-            Intent intent = new Intent(this, activity_customer_map.class);
-            login_Paralel(intent);
-    }
         GarageOwner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login_Paralel();
+                startActivity(new Intent(login_Paralel.this,.class));
             }
         });
 
-        public void login_Paralel(){
-            Intent intent = new Intent( this, activity_driver_map.class);
-            login_Paralel(intent);
+
         }
 }
