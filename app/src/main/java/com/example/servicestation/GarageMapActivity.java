@@ -77,7 +77,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     private Switch mWorkingSwitch;
 
     private int status = 0;
-
     private String customerId = "", destination;
     private LatLng destinationLatLng, pickupLatLng;
     private float rideDistance;
