@@ -34,14 +34,9 @@ public class Service_type extends AppCompatActivity {
         LogOut.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Service_type();            }
+                startActivity(new Intent(Service_type.this,Login.class));           }
         });
 
-        public void Service_type(){
-            Intent intent = new Intent(this, Login.class);
-            startActivity(intent);
-
-        }
 
         MinorService.setOnClickListener(new View.OnClickListener()
         {
@@ -50,7 +45,7 @@ public class Service_type extends AppCompatActivity {
             if (MinorService.isChecked())
                 Result.add("Major Service");
             else
-                Result.remove(0"Major Service");
+                Result.remove("Major Service");
         }
         });
 
@@ -60,7 +55,7 @@ public class Service_type extends AppCompatActivity {
                 if (MajorService.isChecked())
                     Result.add("Major Service");
                 else
-                    Result.remove(0"Minor Service");
+                    Result.remove("Minor Service");
             }
         });
 
@@ -68,18 +63,9 @@ public class Service_type extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Service_type();            }
+                startActivity(new Intent(Service_type.this,));
+            }
         });
-
-        public void Service_type(){
-            Intent intent = new Intent(this, DriverMap.class);
-            startActivity(intent);
-
-        }
-
-
-
-
 
     }
 }

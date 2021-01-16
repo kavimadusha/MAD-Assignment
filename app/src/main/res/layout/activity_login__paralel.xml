@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".login_Paralel">
 
-
-
 <ImageView
 android:id="@+id/imageView"
 android:layout_width="250dp"
@@ -55,8 +53,5 @@ android:layout_marginLeft="70dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:text="Garage owner" />
+
     </LinearLayout>
-
-
-
-

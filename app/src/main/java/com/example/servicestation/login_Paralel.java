@@ -24,7 +24,7 @@ public class login_Paralel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(login_Paralel.this,.class));
+                startActivity(new Intent(login_Paralel.this,Service_type.class));
             }
         });
 

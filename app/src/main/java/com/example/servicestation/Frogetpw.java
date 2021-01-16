@@ -22,25 +22,9 @@ public class Frogetpw extends AppCompatActivity {
         Privious.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Frogetpw();
+                startActivity(new Intent(Frogetpw.this,Login.class));
             }
         });
-        public void Forgetpw(){
-            Intent intent = new Intent(this, DriverMap.class);
-            Forgetpw(intent);
 
-
-        Next.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Frogetpw();
-            }
-        });
-        public void Forgetpw(){
-            Intent intent = new Intent(this, DriverMap.class);
-            Forgetpw(intent);
-
-
-        }
     }
 }

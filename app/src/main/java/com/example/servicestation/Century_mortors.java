@@ -23,7 +23,7 @@ public class Century_mortors extends AppCompatActivity {
             Next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(Century_mortors.this,Force_garage.class));
+                    startActivity(new Intent(Century_mortors.this,.class));
                 }
             });
 

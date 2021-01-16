@@ -42,7 +42,6 @@ import com.google.firebase.database.FirebaseDatabase;
         l_mail = findViewById(R.id.l_email);
         l_pw = findViewById(R.id.l_pasword);
 
-
         auth = FirebaseAuth.getInstance();
 
         logbtn.setOnClickListener(new View.OnClickListener() {
@@ -54,12 +53,14 @@ import com.google.firebase.database.FirebaseDatabase;
         frogetpw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(Login.this,Frogetpw.class));
 
             }
         });
         newreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startActivity(new Intent(Login.this,Register.class));
             }
         });
@@ -68,15 +69,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
         String email = l_mail.getEditText().toString();
         String pw = l_pw.getEditText().toString();
+
         if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             if (!pw.isEmpty()) {
-
-                auth.signInWithEmailAndPassword(email, pw)
+                auth.signInWithEmailAndPassword(email,pw)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Login.this, Dboard.class));
+                                startActivity(new Intent(Login.this,login_Paralel.class));
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -86,6 +87,10 @@ import com.google.firebase.database.FirebaseDatabase;
                 });
             } else {
                 l_mail.setError("Empty Fields are not Allowed");
+            }else if (email.isEmpty()){
+                l_mail.setError("Empty Fields are not Allowed");
+            }else {
+                l_mail.setError("Pleas Enter Correct Email");
             }
         }
     }
