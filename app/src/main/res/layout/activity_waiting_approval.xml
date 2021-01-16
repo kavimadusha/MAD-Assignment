@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".waiting_approval">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="365dp"
+        android:layout_height="405dp"
+        android:alpha="0.3"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="15dp"
+        app:srcCompat="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your request waiting for garage owner approvel!"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="45dp"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="30dp"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
