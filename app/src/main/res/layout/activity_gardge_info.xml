@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Garadge Name      "
+                    android:text="Garage Name "
                     android:textSize="18dp"
                     android:textColor="#000"/>
 
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Description            "
+                    android:text="Description"
                     android:textSize="18dp"
                     android:textColor="#000"/>
 
@@ -129,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Address                 "
+                    android:text="Address  "
                     android:textSize="18dp"
                     android:textColor="#000"/>
 
@@ -155,7 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Phone Number    "
+                    android:text="Phone Number "
                     android:textSize="18dp"
                     android:textColor="#000"/>
 
@@ -181,7 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Owner Details      "
+                    android:text="Owner Details"
                     android:textSize="18dp"
                     android:textColor="#000"/>
 
