@@ -1,4 +1,4 @@
-package com.simp.map;
+package com.example.servicestation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.servicestation.FusedLocationProviderClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,7 +29,7 @@ public class MapDetail extends AppCompatActivity {
     //initialize variable
     Button btLocation;
     TextView textView1, textView2, textView3, textView4, textView5;
-    FusedLocationProviderClient fusedLocationProviderClient;
+    com.example.servicestation.FusedLocationProviderClient fusedLocationProviderClient;
     private Object FusedLocationProviderClient;
 
     @Override
@@ -121,7 +122,6 @@ public class MapDetail extends AppCompatActivity {
                 }
             }
         });
-
 
     }
 }

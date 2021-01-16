@@ -31,7 +31,7 @@ public class Force_garage extends AppCompatActivity {
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Force_garage.this,.class));
+                startActivity(new Intent(Force_garage.this,MapDetail.class));
             }
         });
 

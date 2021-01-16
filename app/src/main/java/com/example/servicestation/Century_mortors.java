@@ -1,11 +1,11 @@
 package com.example.servicestation;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Century_mortors extends AppCompatActivity {
 
@@ -22,14 +22,14 @@ public class Century_mortors extends AppCompatActivity {
             Next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(Century_mortors.this,Garadge_name.class));
+                    startActivity(new Intent(Century_mortors.this,.class));
                 }
             });
 
             Back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(Century_mortors.this,.class));
+                    startActivity(new Intent(Century_mortors.this,MapDetail.class));
                 }
             });
 
