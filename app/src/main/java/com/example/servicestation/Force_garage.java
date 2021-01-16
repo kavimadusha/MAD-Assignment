@@ -24,7 +24,7 @@ public class Force_garage extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Force_garage.this,Gamage_garage.class));
+                startActivity(new Intent(Force_garage.this,.class));
             }
         });
 

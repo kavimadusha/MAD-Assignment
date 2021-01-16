@@ -1,29 +1,29 @@
 package com.example.servicestation;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class Shedule_pickup extends AppCompatActivity {
-    private Button logbtn;
+    private Button Confirmbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shedule_pickup);
 
-        logbtn = findViewById(R.id.button7);
+        Confirmbtn = findViewById(R.id.button7);
 
-        logbtn.setOnClickListener(new View.OnClickListener() {
+        Confirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent ( packageContenxt: Shedule_pickup.this.century.class);
-                startActivity(intent);
+                startActivity(new Intent(Shedule_pickup.this,class));
             }
         });
 
 
-
-            }
-        })
     }
 }

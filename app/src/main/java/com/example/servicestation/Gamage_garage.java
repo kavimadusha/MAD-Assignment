@@ -21,23 +21,15 @@ public class Gamage_garage extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button();
+                startActivity(new Intent(Gamage_garage.this,));
             }
         });
-
-        public void Button(){
-            Gamage_garage gamage_garage = new Gamage_garage();
-            gamage_garage.show(getSupportFragmentManager(), "Gamage Garaj")
-        }
 
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Gamage_garage()
+                startActivity(new Intent(Gamage_garage.this,));
             }
-            public void Gamage_garage(){
-                Intent intent = new Intent(this, shedule_pickup.class);
-                login_Paralel(intent);
             });
         }
 }

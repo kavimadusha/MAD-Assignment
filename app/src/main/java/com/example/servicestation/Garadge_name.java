@@ -36,8 +36,7 @@ public class Garadge_name extends AppCompatActivity {
                 if (call.isChecked()){
                     Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();}
                 else
-                    setResult("Will connect to a call");
-                }
+                    Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();}
 
             private void setResult(String s) {
             }
@@ -47,12 +46,11 @@ public class Garadge_name extends AppCompatActivity {
             @Override
             public void onClick (View v){
                 if (employee.isChecked())
+
                     setResult(1"An employee will soon be there");
                 else
                     setResult(2"An employee will soon be there.");
             }
-
-
         });
 
         vehicle.setOnClickListener(new View.OnClickListener(){
@@ -69,25 +67,17 @@ public class Garadge_name extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Garadge_name();
+                startActivity(new Intent(Garadge_name.this,Shedule_pickup.class));
             }
         });
 
-        public void Garadge_name(){
-            Intent intent = new Intent(this, Shedule_pickup.class);
-            Garadge_name(intent);
-        }
+
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Garadge_name();
+
+                startActivity(new Intent(Garadge_name.this,Century_mortors.class);
             }
         });
-
-        public void Garadge_name(){
-            Intent intent = new Intent( this, activity_customer_map.class);
-            Garadge_name(intent);
-        }
-
     }
 }

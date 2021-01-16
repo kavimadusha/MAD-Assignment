@@ -9,7 +9,6 @@ import android.widget.Button;
 
 public class Century_mortors extends AppCompatActivity {
 
-
     private Button Next, Back;
 
     @Override
@@ -23,7 +22,7 @@ public class Century_mortors extends AppCompatActivity {
             Next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(Century_mortors.this,.class));
+                    startActivity(new Intent(Century_mortors.this,Garadge_name.class));
                 }
             });
 

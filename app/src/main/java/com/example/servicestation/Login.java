@@ -87,7 +87,7 @@ import com.google.firebase.database.FirebaseDatabase;
                 });
             } else {
                 l_mail.setError("Empty Fields are not Allowed");
-            }else if (email.isEmpty()){
+            } if (email.isEmpty()){
                 l_mail.setError("Empty Fields are not Allowed");
             }else {
                 l_mail.setError("Pleas Enter Correct Email");
