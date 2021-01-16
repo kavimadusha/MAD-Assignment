@@ -1,5 +1,6 @@
  package com.example.servicestation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,8 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,6 +29,7 @@ public class Garageowner_reg extends AppCompatActivity {
     private Button gvehiclereg_btn;
     private TextInputLayout goemail,goname,gophnum,gopw,gocpw;
 
+    private FirebaseAuth authm;
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -42,6 +48,9 @@ public class Garageowner_reg extends AppCompatActivity {
         gophnum = findViewById(R.id.gor_phno);
         gopw = findViewById(R.id.gor_password);
         gocpw = findViewById(R.id.gor_cpassword);
+
+        authm = FirebaseAuth.getInstance();
+
 
         greg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,45 +73,45 @@ public class Garageowner_reg extends AppCompatActivity {
                     goemail.requestFocus();
                     return;
                 }
-                if (gname.isEmpty()) {
+               else if (gname.isEmpty()) {
                     goname.setError("Username is Empty");
                     goname.requestFocus();
                     return;
                 }
-                if (gphnum.isEmpty()) {
+               else if (gphnum.isEmpty()) {
                     gophnum.setError("Phone Number is Empty");
                     gophnum.requestFocus();
                     return;
                 }
-                if (gpw.isEmpty()) {
+               else if (gpw.isEmpty()) {
                     gopw.setError("Password is Empty");
                     gopw.requestFocus();
                     return;
                 }
-                if (gcpw.isEmpty()) {
+               else if (gcpw.isEmpty()) {
                     gocpw.setError("Confirm Passwor is Empty");
                     gocpw.requestFocus();
                     return;
                 }
-                if (gopw.equals(gocpw)) {
+               else if (gopw.equals(gocpw)) {
                     Toast.makeText(Garageowner_reg.this, "Password is not matched", Toast.LENGTH_SHORT).show();
                     gocpw.requestFocus();
                     gopw.requestFocus();
                     return;
                 }
-                if (!Patterns.EMAIL_ADDRESS.matcher(gemail).matches()) {
+               else if (!Patterns.EMAIL_ADDRESS.matcher(gemail).matches()) {
                     goemail.setError("Please Enter Valid Email");
                     goemail.requestFocus();
                     return;
                 }
-                if (gcpw.length() < 6) {
+                else if (gcpw.length() < 6) {
                     gopw.setError("Minimum Password Length should be 6 Characters");
                     gopw.requestFocus();
                     return;
                 }
                 else {
                         registerUser(gemail,gname,gphnum,gpw,gcpw);
-                    Toast.makeText(Garageowner_reg.this,"User has been Registered Successfult",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Garageowner_reg.this,"User has been Registered Successfully",Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -121,5 +130,15 @@ public class Garageowner_reg extends AppCompatActivity {
         });
     }
     private void registerUser(String gemail, String gname, String gphnum, String gpw, String gcpw) {
+        authm.createUserWithEmailAndPassword(gemail,gpw).addOnCompleteListener(Garageowner_reg.this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(Garageowner_reg.this,"Registration Successful",Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(Garageowner_reg.this,"Registration Failed",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 }

@@ -68,34 +68,26 @@ import com.google.firebase.database.FirebaseDatabase;
 
         String email = l_mail.getEditText().toString();
         String pw = l_pw.getEditText().toString();
-        if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            if (!pw.isEmpty()){
+        if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            if (!pw.isEmpty()) {
 
-                auth.signInWithEmailAndPassword(email,pw)
+                auth.signInWithEmailAndPassword(email, pw)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                Toast.makeText(Login.this,"Login Successfully",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Login.this,Dboard.class));
+                                Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(Login.this, Dboard.class));
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Login.this,"Login Failed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-            }else {
-                 l_mail.setError("Empty Fields are not Allowed");
+            } else {
+                l_mail.setError("Empty Fields are not Allowed");
             }
-        }else if (email.isEmpty()) {
-            l_mail.setError("Email is Empty");
-        }else if (pw.isEmpty()){
-            l_pw.setError("Password is Empty");
-        }else {
-            l_mail.setError("Please Enter Correct Email");
         }
-
     }
 }
 
