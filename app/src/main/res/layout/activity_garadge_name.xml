@@ -15,14 +15,33 @@
         android:layout_marginLeft="15dp"
         app:srcCompat="@drawable/ss" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp">
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#000"
+                    android:hint="Search"
+                    android:layout_marginRight="15dp"/>
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,7 +59,7 @@
                     android:textColor="#000"
                     android:textSize="20dp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="10dp"/>
+                    />
 
                 <TextView
                     android:id="@+id/textView23"
@@ -49,14 +68,17 @@
                     android:text="At Julgaha Junction"
                     android:textSize="18dp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginTop="10dp"
+                   />
 
                 <TextView
                     android:id="@+id/textView26"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rating - 3.0"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    android:layout_marginTop="5dp"
+                    />
 
             </LinearLayout>
 
@@ -65,7 +87,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -117,7 +139,7 @@
                         android:text="Ask from call              "
                         android:textColor="#000"
                         android:textSize="15dp"
-                       />
+                        />
 
                     <TextView
                         android:id="@+id/textView30"
@@ -169,7 +191,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                         />
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -220,6 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginRight="20dp"
+                    android:layout_marginTop="15dp"
                     android:text="Back"
                     android:layout_gravity="center"/>
 
@@ -227,13 +250,13 @@
                     android:id="@+id/button9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:text="Next"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_gravity="center"/>
             </LinearLayout>
 
         </LinearLayout>
-    </ScrollView>
 
 </RelativeLayout>

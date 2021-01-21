@@ -1,6 +1,7 @@
 package com.example.servicestation;
 
 public class UserHelperClass2 {
+
     String Email_address,Garage_name,Phone_Number,Password,Confirm_Password;
 
     public UserHelperClass2() {
@@ -54,3 +55,5 @@ public class UserHelperClass2 {
         Confirm_Password = confirm_Password;
     }
 }
+
+

@@ -1,25 +1,23 @@
 package com.example.servicestation;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class Force_garage extends AppCompatActivity {
-    private Button Next, Back;
 
-    private Button Next1;
-    private Button Back1;
+    private Button Next, Back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login__paralel);
+        setContentView(R.layout.activity_force_garage);
 
-        Next1 = (Button) findViewById(R.id.button);
-        Back1 = (Button) findViewById(R.id.button2);
+        Next = (Button) findViewById(R.id.f_next);
+        Back = (Button) findViewById(R.id.f_back);
 
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,7 +29,7 @@ public class Force_garage extends AppCompatActivity {
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Force_garage.this,Mapnew.class));
+                startActivity(new Intent(Force_garage.this,test.class));
             }
         });
 

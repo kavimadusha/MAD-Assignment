@@ -1,6 +1,7 @@
 package com.example.servicestation;
 
 public class UserHelperClass3 {
+
     String Garage_Name,Description,Address,Phone_Number,Owner_Details,No_of_employees;
 
     public UserHelperClass3(){
@@ -64,3 +65,4 @@ public class UserHelperClass3 {
         No_of_employees = no_of_employees;
     }
 }
+

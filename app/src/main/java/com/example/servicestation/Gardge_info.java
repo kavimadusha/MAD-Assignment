@@ -1,6 +1,7 @@
 package com.example.servicestation;
 
-import android.annotation.SuppressLint;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,63 +10,59 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Gardge_info extends AppCompatActivity {
 
-    private Button summitbtn ;
-    private EditText textView24,textView25,textView36,textView37,textView38,textView39;
+    private Button summitbtn, logoutbtn;
+    private TextInputLayout g_name, g_des, g_address, g_pnum, g_owetails, g_noofemp;
 
-    private FirebaseAuth authw;
-    FirebaseDatabase rootNode;
     DatabaseReference reference;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gardge_info);
 
-        textView24 = findViewById(R.id.textView24);
-        textView25 = findViewById(R.id.textView25);
-        textView36 = findViewById(R.id.textView36);
-        textView37 = findViewById(R.id.textView37);
-        textView38 = findViewById(R.id.textView38);
-        textView39 = findViewById(R.id.textView39);
-        summitbtn = findViewById(R.id.button11);
+        g_name = findViewById(R.id.gname);
+        g_des = findViewById(R.id.gdescription);
+        g_address = findViewById(R.id.gaddress);
+        g_pnum = findViewById(R.id.gphonnum);
+        g_owetails = findViewById(R.id.gownerdetails);
+        g_noofemp = findViewById(R.id.gnoofemp);
+        summitbtn = findViewById(R.id.gsubmit_btn);
+        logoutbtn = findViewById(R.id.button10);
+
+        reference = FirebaseDatabase.getInstance().getReference().child("Garage_Information");
 
         summitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Gardge_info.this,Mapnew.class));
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("Garage Information");
-
-                String garagename = textView24.getText().toString();
-                String Description = textView25.getText().toString();
-                String address = textView36.getText().toString();
-                String phonenumber = textView37.getText().toString();
-                String ownerinfo = textView38.getText().toString();
-                String nofemp = textView39.getText().toString();
-
-                UserHelperClass3 helperClass3 = new UserHelperClass3(garagename, Description, address, phonenumber, ownerinfo, nofemp);
-                reference.child(garagename).setValue(helperClass3);
-
-                if (TextUtils.isEmpty(garagename) || TextUtils.isEmpty(Description) || TextUtils.isEmpty(address) || TextUtils.isEmpty(phonenumber) || TextUtils.isEmpty(ownerinfo) || TextUtils.isEmpty(nofemp)) {
-                    Toast.makeText(Gardge_info.this, "Please fill all the Information", Toast.LENGTH_SHORT).show();
-                } else {
-                    addinfo(garagename, Description, address, phonenumber, ownerinfo, nofemp);
-                }
+                startActivity(new Intent(Gardge_info.this, Ownerdashbord.class));
+                addinfo();
             }
-
-
         });
     }
-            private  void addinfo(String gname,String des,String address, String Pnum, String Owninfo,String noofemp ) {
 
-            }
+    private void addinfo() {
+
+        String garagename = g_name.getEditText().getText().toString();
+        String description = g_des.getEditText().getText().toString();
+        String address = g_address.getEditText().getText().toString();
+        String phonenumber = g_pnum.getEditText().getText().toString();
+        String ownerinfo = g_owetails.getEditText().getText().toString();
+        String nofemp = g_noofemp.getEditText().getText().toString();
+
+        if (TextUtils.isEmpty(garagename) || TextUtils.isEmpty(description) || TextUtils.isEmpty(address) || TextUtils.isEmpty(phonenumber) || TextUtils.isEmpty(ownerinfo) || TextUtils.isEmpty(nofemp)) {
+            Toast.makeText(Gardge_info.this, "Please fill all the Information", Toast.LENGTH_SHORT).show();
+        } else {
+            UserHelperClass3 helperClass3 = new UserHelperClass3(garagename, description, address, phonenumber, ownerinfo, nofemp);
+            reference.push().setValue(helperClass3);
+            Toast.makeText(Gardge_info.this, "Data Inserted", Toast.LENGTH_SHORT).show();
+
+        }
     }
+}

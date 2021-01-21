@@ -9,12 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ServiceStation">
-        <activity android:name=".test"></activity>
+        <activity android:name=".Waiting_approval"></activity>
+        <activity android:name=".Garadge_name" />
+        <activity android:name=".Shedule_pickup" />
+        <activity android:name=".Gamage_garage" />
+        <activity android:name=".Force_garage" />
+        <activity android:name=".Century_mortors" />
+        <activity android:name=".test" />
+        <activity android:name=".Ownerdashbord" />
+        <activity android:name=".Gardge_info" />
+        <activity android:name=".Service_type" />
+        <activity android:name=".Frogetpw" />
+        <activity android:name=".Paralel_login" />
         <activity android:name=".Garageowner_reg" />
         <activity android:name=".Vehicleowner_reg" />
-        <activity android:name=".Frogetpw" />
-        <activity android:name=".Login" />
         <activity android:name=".Register" />
+        <activity android:name=".Login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

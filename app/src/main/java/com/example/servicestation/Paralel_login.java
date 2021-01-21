@@ -1,13 +1,13 @@
 package com.example.servicestation;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class login_Paralel extends AppCompatActivity {
+public class Paralel_login extends AppCompatActivity {
 
     private Button VehicalOwner;
     private Button GarageOwner;
@@ -15,7 +15,8 @@ public class login_Paralel extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login__paralel);
+        setContentView(R.layout.activity_paralel_login);
+
 
         VehicalOwner = (Button) findViewById(R.id.button);
         GarageOwner = (Button) findViewById(R.id.button2);
@@ -24,17 +25,17 @@ public class login_Paralel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(login_Paralel.this,Service_type.class));
+                startActivity(new Intent(Paralel_login.this,Service_type.class));
             }
         });
 
         GarageOwner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(login_Paralel.this,Mapnew.class));
+                startActivity(new Intent(Paralel_login.this,Ownerdashbord.class));
             }
         });
 
 
-        }
+    }
 }

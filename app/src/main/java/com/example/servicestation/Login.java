@@ -1,4 +1,4 @@
-   package com.example.servicestation;
+package com.example.servicestation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,16 +11,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-   public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private Button logbtn;
     private Button frogetpw;
@@ -36,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         logbtn = findViewById(R.id.log_btn);
         frogetpw = findViewById(R.id.froget_pw);
         newreg = findViewById(R.id.nw_reg);
@@ -47,14 +46,29 @@ import com.google.firebase.database.FirebaseDatabase;
         logbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginUser();
+                startActivity(new Intent(Login.this, Paralel_login.class));
+
+                String email = l_mail.getEditText().toString();
+                String pw = l_pw.getEditText().toString();
+
+                if (email.isEmpty()) {
+                    l_mail.setError("Email is Empty");
+                    l_mail.requestFocus();
+                    return;
+                } else if (pw.isEmpty()) {
+                    l_pw.setError("Password is Empty");
+                    l_mail.requestFocus();
+                } else
+                    loginUser(email, pw);
+                Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_LONG).show();
+
             }
         });
 
         frogetpw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this,Frogetpw.class));
+                startActivity(new Intent(Login.this, Frogetpw.class));
 
             }
         });
@@ -63,23 +77,21 @@ import com.google.firebase.database.FirebaseDatabase;
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(Login.this,Register.class));
+                startActivity(new Intent(Login.this, Register.class));
             }
         });
     }
-    private void loginUser(){
 
-        String email = l_mail.getEditText().toString();
-        String pw = l_pw.getEditText().toString();
+    private void loginUser(String email, String pw) {
 
-        if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             if (!pw.isEmpty()) {
-                auth.signInWithEmailAndPassword(email,pw)
+                auth.signInWithEmailAndPassword(email, pw)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Login.this,login_Paralel.class));
+                                startActivity(new Intent(Login.this, Paralel_login.class));
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -87,14 +99,10 @@ import com.google.firebase.database.FirebaseDatabase;
                         Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     }
                 });
-            } else {
-                l_mail.setError("Empty Fields are not Allowed");
-            } if (email.isEmpty()){
-                l_mail.setError("Empty Fields are not Allowed");
-            }else {
-                l_mail.setError("Pleas Enter Correct Email");
+
             }
         }
     }
 }
+
 

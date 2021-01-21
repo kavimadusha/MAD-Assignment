@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,7 +12,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
@@ -31,7 +29,6 @@ public class Vehicleowner_reg extends AppCompatActivity {
     private FirebaseAuth auth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +50,6 @@ public class Vehicleowner_reg extends AppCompatActivity {
         vreg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Vehicleowner_reg.this,Service_type .class));
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("Vehicle owner");
 
                 String vemail = voemail.getEditText().getText().toString();
                 String vuname = vouname.getEditText().getText().toString();
@@ -63,46 +57,36 @@ public class Vehicleowner_reg extends AppCompatActivity {
                 String vpw1 = vopw.getEditText().getText().toString();
                 String vcpw = vocpw.getEditText().getText().toString();
 
-                UserHelperClass helperClass = new UserHelperClass(vemail, vuname, vphnum, vpw1, vcpw);
-                reference.child(vuname).setValue(helperClass);
-
                 if (vemail.isEmpty()) {
                     voemail.setError("Email is Empty");
                     voemail.requestFocus();
                     return;
-                }
-                else if (vuname.isEmpty()) {
+                } else if (vuname.isEmpty()) {
                     vouname.setError("Username is Empty");
                     vouname.requestFocus();
                     return;
-                }
-               else if (vphnum.isEmpty()) {
+                } else if (vphnum.isEmpty()) {
                     vophnum.setError("Phone Number is Empty");
                     vophnum.requestFocus();
                     return;
-                }
-               else if (vpw1.isEmpty()) {
+                } else if (vpw1.isEmpty()) {
                     vopw.setError("Password is Empty");
                     vopw.requestFocus();
                     return;
-                }
-               else if (vcpw.isEmpty()) {
+                } else if (vcpw.isEmpty()) {
                     vocpw.setError("Confirm Password is Empty");
                     vocpw.requestFocus();
                     return;
-                }
-               else if (vopw.equals(vocpw)) {
+                } else if (vopw.equals(vocpw)) {
                     Toast.makeText(Vehicleowner_reg.this, "Password is not matched", Toast.LENGTH_SHORT).show();
                     vocpw.requestFocus();
                     vopw.requestFocus();
                     return;
-                }
-               else if (!Patterns.EMAIL_ADDRESS.matcher(vemail).matches()) {
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(vemail).matches()) {
                     voemail.setError("Please Enter Valid Email");
                     voemail.requestFocus();
                     return;
-                }
-               else if (vcpw.length() < 6) {
+                } else if (vcpw.length() < 6) {
                     vopw.setError("Minimum Password Length should be 6 Characters");
                     vopw.requestFocus();
                     return;
@@ -128,14 +112,20 @@ public class Vehicleowner_reg extends AppCompatActivity {
 
     private void registerUser(String vemail, String vuname, String vphnum, String vpw1, String vcpw) {
 
-        auth.createUserWithEmailAndPassword(vemail,vpw1).addOnCompleteListener(Vehicleowner_reg.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(vemail, vpw1).addOnCompleteListener(Vehicleowner_reg.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-           if (task.isSuccessful()){
-               Toast.makeText(Vehicleowner_reg.this,"Registration Successful",Toast.LENGTH_LONG).show();
-           }else {
-               Toast.makeText(Vehicleowner_reg.this,"Registration Failed",Toast.LENGTH_LONG).show();
-           }
+                if (task.isSuccessful()) {
+                    rootNode = FirebaseDatabase.getInstance();
+                    reference = rootNode.getReference("Vehicle owner");
+                    UserHelperClass helperClass = new UserHelperClass(vemail, vuname, vphnum, vpw1, vcpw);
+                    reference.child(vuname).setValue(helperClass);
+                    Toast.makeText(Vehicleowner_reg.this, "User has been Registered Successfully", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(Vehicleowner_reg.this, Service_type.class));
+
+                } else {
+                    Toast.makeText(Vehicleowner_reg.this, "Registration Failed", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

@@ -40,15 +40,15 @@
         android:layout_marginTop="10dp"
         >
 
-    <Button
-        android:id="@+id/v_vehiclereg_btn"
-        android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:background="#ffa500"
-        android:text="Vehicle owner"
-        android:textColor="#fff"
-        android:layout_weight="1"
-        />
+        <Button
+            android:id="@+id/v_vehiclereg_btn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:background="#ffa500"
+            android:text="Vehicle owner"
+            android:textColor="#fff"
+            android:layout_weight="1"
+            />
 
         <Button
             android:id="@+id/v_gargereg_btn"

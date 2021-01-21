@@ -10,22 +10,23 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Waiting_approval extends AppCompatActivity {
+public class Ownerdashbord extends AppCompatActivity {
 
-    private Button wplogout;
+    private Button owdblogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_waiting_approval);
-        wplogout = findViewById(R.id.wp_logout);
+        setContentView(R.layout.activity_ownerdashbord);
 
-        wplogout.setOnClickListener(new View.OnClickListener() {
+        owdblogout = findViewById(R.id.owdblogout);
+
+        owdblogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Toast.makeText(Waiting_approval.this,"Logged Out",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Waiting_approval.this,Login.class));
+                Toast.makeText(Ownerdashbord.this,"Logged Out",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Ownerdashbord.this,Login.class));
             }
         });
     }

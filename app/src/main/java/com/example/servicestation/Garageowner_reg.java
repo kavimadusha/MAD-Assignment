@@ -1,4 +1,7 @@
- package com.example.servicestation;
+package com.example.servicestation;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +10,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,7 +26,7 @@ public class Garageowner_reg extends AppCompatActivity {
     private Button gvehiclereg_btn;
     private TextInputLayout goemail,goname,gophnum,gopw,gocpw;
 
-    private FirebaseAuth authm;
+    private FirebaseAuth auth;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
@@ -45,15 +45,12 @@ public class Garageowner_reg extends AppCompatActivity {
         gopw = findViewById(R.id.gor_password);
         gocpw = findViewById(R.id.gor_cpassword);
 
-        authm = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
 
         greg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Garageowner_reg.this,Gardge_info.class));
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("Garage owner");
 
                 String gemail = goemail.getEditText().getText().toString();
                 String gname = goname.getEditText().getText().toString();
@@ -61,41 +58,38 @@ public class Garageowner_reg extends AppCompatActivity {
                 String gpw = gopw.getEditText().getText().toString();
                 String gcpw = gocpw .getEditText().getText().toString();
 
-                UserHelperClass2 helperClass2 = new UserHelperClass2(gemail,gname,gphnum,gpw,gcpw);
-                reference.child(gname).setValue(helperClass2);
-
                 if (gemail.isEmpty()) {
                     goemail.setError("Email is Empty");
                     goemail.requestFocus();
                     return;
                 }
-               else if (gname.isEmpty()) {
+                else if (gname.isEmpty()) {
                     goname.setError("Username is Empty");
                     goname.requestFocus();
                     return;
                 }
-               else if (gphnum.isEmpty()) {
+                else if (gphnum.isEmpty()) {
                     gophnum.setError("Phone Number is Empty");
                     gophnum.requestFocus();
                     return;
                 }
-               else if (gpw.isEmpty()) {
+                else if (gpw.isEmpty()) {
                     gopw.setError("Password is Empty");
                     gopw.requestFocus();
                     return;
                 }
-               else if (gcpw.isEmpty()) {
+                else if (gcpw.isEmpty()) {
                     gocpw.setError("Confirm Passwor is Empty");
                     gocpw.requestFocus();
                     return;
                 }
-               else if (gopw.equals(gocpw)) {
+                else if (gopw.equals(gocpw)) {
                     Toast.makeText(Garageowner_reg.this, "Password is not matched", Toast.LENGTH_SHORT).show();
                     gocpw.requestFocus();
                     gopw.requestFocus();
                     return;
                 }
-               else if (!Patterns.EMAIL_ADDRESS.matcher(gemail).matches()) {
+                else if (!Patterns.EMAIL_ADDRESS.matcher(gemail).matches()) {
                     goemail.setError("Please Enter Valid Email");
                     goemail.requestFocus();
                     return;
@@ -106,7 +100,7 @@ public class Garageowner_reg extends AppCompatActivity {
                     return;
                 }
                 else {
-                        registerUser(gemail,gname,gphnum,gpw,gcpw);
+                    registerUser(gemail,gname,gphnum,gpw,gcpw);
                     Toast.makeText(Garageowner_reg.this,"User has been Registered Successfully",Toast.LENGTH_LONG).show();
 
                 }
@@ -126,14 +120,21 @@ public class Garageowner_reg extends AppCompatActivity {
         });
     }
     private void registerUser(String gemail, String gname, String gphnum, String gpw, String gcpw) {
-        authm.createUserWithEmailAndPassword(gemail,gpw).addOnCompleteListener(Garageowner_reg.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(gemail,gpw).addOnCompleteListener(Garageowner_reg.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(Garageowner_reg.this,"Registration Successful",Toast.LENGTH_LONG).show();
+                    rootNode = FirebaseDatabase.getInstance();
+                    reference = rootNode.getReference("Garage owner");
+                    UserHelperClass2 helperClass2 = new UserHelperClass2(gemail,gname,gphnum,gpw,gcpw);
+                    reference.child(gname).setValue(helperClass2);
+                    Toast.makeText(Garageowner_reg.this,"User has been Registered Successfully",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(Garageowner_reg.this,Gardge_info.class));
+
                 }else {
                     Toast.makeText(Garageowner_reg.this,"Registration Failed",Toast.LENGTH_LONG).show();
                 }
+
             }
         });
     }

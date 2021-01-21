@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">Service Station</string>
-    <color name="gray">#DDDDDDDD</color>
-    <string name="title_activity_mapnew">Map</string>
 </resources>

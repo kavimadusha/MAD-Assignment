@@ -1,5 +1,7 @@
 package com.example.servicestation;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,13 +9,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class Garadge_name extends AppCompatActivity {
 
     private Button Next, Back;
-    private CheckBox call, employee,vehicle;
-
+    private CheckBox call, employee, vehicle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,29 +30,32 @@ public class Garadge_name extends AppCompatActivity {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (call.isChecked()){
-                    Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();}
-                else
-                    Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();}
+                if (call.isChecked()) {
+                    Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();
+            }
 
             private void setResult(String s) {
             }
         });
 
-        employee.setOnClickListener(new View.OnClickListener(){
+        employee.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View v){
-                if (employee.isChecked()){
+            public void onClick(View v) {
+                if (employee.isChecked()) {
 
-                    Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();}
+                    Toast.makeText(Garadge_name.this, "Will connect to a call", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-        vehicle.setOnClickListener(new View.OnClickListener(){
+        vehicle.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View v){
-                if (vehicle.isChecked()){
-                Toast.makeText(Garadge_name.this, "A vehicle will soon be there", Toast.LENGTH_SHORT).show();}
+            public void onClick(View v) {
+                if (vehicle.isChecked()) {
+                    Toast.makeText(Garadge_name.this, "A vehicle will soon be there", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -62,7 +64,7 @@ public class Garadge_name extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Garadge_name.this,Shedule_pickup.class));
+                startActivity(new Intent(Garadge_name.this, Shedule_pickup.class));
             }
         });
 
@@ -71,7 +73,7 @@ public class Garadge_name extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(Garadge_name.this,Century_mortors.class));
+                startActivity(new Intent(Garadge_name.this, test.class));
             }
         });
     }

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Garageowner_reg"
     android:orientation="vertical"
     android:padding="20dp"
     android:background="#fff"
-    android:id="@+id/garageowner_register_screen">
+    android:id="@+id/garageowner_register_screen"
+    tools:context=".Garageowner_reg">
 
     <ImageView
         android:layout_width="150dp"

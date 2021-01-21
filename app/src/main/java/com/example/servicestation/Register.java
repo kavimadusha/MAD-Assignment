@@ -10,18 +10,15 @@ import android.widget.Button;
 
 public class Register extends AppCompatActivity {
 
-
     private Button log_backbtn;
     private Button vo_reg;
     private Button go_reg;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         log_backbtn = findViewById(R.id.log_backbtn);
         vo_reg = findViewById(R.id.vehiclereg_btn);
         go_reg = findViewById(R.id.gargrereg_btn);
