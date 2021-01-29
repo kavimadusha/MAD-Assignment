@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class test extends AppCompatActivity {
+public class Beforemap extends AppCompatActivity {
 
     private Button century,force,gamage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_beforemap);
 
         century = findViewById(R.id.button5);
         force = findViewById(R.id.button7);
@@ -23,19 +23,19 @@ public class test extends AppCompatActivity {
         century.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(test.this,Century_mortors.class));
+                startActivity(new Intent(Beforemap.this,Century_mortors.class));
             }
         });
         force.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(test.this,Force_garage.class));
+                startActivity(new Intent(Beforemap.this,Force_garage.class));
             }
         });
         gamage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(test.this,Gamage_garage.class));
+                startActivity(new Intent(Beforemap.this,Gamage_garage.class));
             }
         });
     }

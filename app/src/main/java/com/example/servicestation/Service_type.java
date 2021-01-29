@@ -28,7 +28,7 @@ public class Service_type extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Service_type.this,test.class));
+                startActivity(new Intent(Service_type.this,Beforemap.class));
             }
         });
     }

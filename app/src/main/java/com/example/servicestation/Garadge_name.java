@@ -73,7 +73,7 @@ public class Garadge_name extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(Garadge_name.this, test.class));
+                startActivity(new Intent(Garadge_name.this, Beforemap.class));
             }
         });
     }

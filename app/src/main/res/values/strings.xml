@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">Service Station</string>
+    <string name="button1_text">
+        <br>
+        CENTUARY MOTORS
+        </br>
+                (Julgaha Junction)
+        <br>
+                077-345762
+        </br>
+    </string>
+
+    <string name="button2_text">
+        FORCE MOTORS
+        <br/>
+        (Samagi Junction)
+        <br/>
+        071-6557890
+    </string>
+    <string name="button3_text">
+        GAMAGE MOTORS
+        <br/>
+        (Minuwangoda Junction)
+        <br/>
+        078-2234699
+    </string>
 </resources>

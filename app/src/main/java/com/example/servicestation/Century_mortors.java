@@ -29,7 +29,7 @@ public class Century_mortors extends AppCompatActivity {
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Century_mortors.this,test.class));
+                startActivity(new Intent(Century_mortors.this,Beforemap.class));
             }
         });
 
